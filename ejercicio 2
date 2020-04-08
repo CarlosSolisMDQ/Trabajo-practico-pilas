@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+
+int main()
+{
+    //cargar una pila desde el teclado y pasar todos sus elementos a otra pila
+    
+    Pila a, b;
+    inicpila(&a);
+    inicpila(&b);
+
+    char letra;
+    do {
+        leer(&a);
+        scanf("%c", &letra);
+        if (letra == '*'){
+            desapilar(&a);
+        }
+    } while (letra != '*');
+
+
+    while (!pilavacia(&a)) {
+        apilar(&b, desapilar(&a));
+    }
+    mostrar(&a);
+    mostrar(&b);
+    return 0;
+}
