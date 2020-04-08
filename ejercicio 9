@@ -3,6 +3,8 @@
 #include "pila.h"
 int main()
 {
+    
+    //comparar la cantidad de elementos de dos pilas.
     Pila a, b;
     inicpila(&a);
     inicpila(&b);
