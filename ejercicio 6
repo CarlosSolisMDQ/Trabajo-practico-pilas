@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+
+int main()
+{
+    //pasar el primer elemento (tope) de una pila a su base sin alterar el orden de los demas elementos.
+    Pila a, b, c;
+    inicpila(&a);
+    inicpila(&b);
+    inicpila(&c);
+    char letra;
+    do {
+        leer(&a);
+        scanf("%c", &letra);
+        if (letra == '*'){
+            desapilar(&a);
+        }
+    } while (letra != '*');
+    mostrar(&a);
+
+    apilar(&b, desapilar(&a));
+
+    while (!pilavacia(&a)) {
+        apilar(&c, desapilar(&a));
+    }
+
+    apilar(&a, desapilar(&b));
+
+    while (!pilavacia(&c)) {
+        apilar(&a, desapilar(&c));
+    }
+
+    mostrar(&a);
+
+    return 0;
+}
+
