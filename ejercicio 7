@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+
+int main()
+{
+    //pasar el ultimo elemento(base) al tope de una pila sin alterar el orden de los restantes elementos.
+
+    Pila a, b, c;
+    inicpila(&a);
+    inicpila(&b);
+    inicpila(&c);
+    char letra;
+    do {
+        leer(&a);
+        scanf("%c", &letra);
+        if (letra == '*'){
+            desapilar(&a);
+        }
+    } while (letra != '*');
+    mostrar(&a);
+
+
+
+    while (!pilavacia(&a)) {
+        apilar(&b, desapilar(&a));
+    }
+
+    apilar(&c, desapilar(&b));
+
+    while (!pilavacia(&b)) {
+        apilar(&a, desapilar(&b));
+    }
+    apilar(&a, desapilar(&c));
+
+    mostrar(&a);
+
+    return 0;
+}
