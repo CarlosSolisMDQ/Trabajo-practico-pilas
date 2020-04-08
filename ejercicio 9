@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+int main()
+{
+    Pila a, b;
+    inicpila(&a);
+    inicpila(&b);
+
+    char letra;
+    int contador = 0, contador2 = 0;
+    printf("ingrese una pila:\n");
+    do {
+        leer(&a);
+        scanf("%c", &letra);
+        if (letra == '*'){
+            desapilar(&a);
+        }
+        contador++;
+    } while (letra != '*');
+
+    letra = 'o';
+
+    printf("ingrese una segunda pila:\n");
+    do {
+        leer(&b);
+        scanf("%c", &letra);
+        if (letra == '*'){
+            desapilar(&b);
+        }
+        contador2++;
+    } while (letra != '*');
+
+    if (contador != contador2) {
+        printf("\nlas pilas tienen una cantidad diferente de elementos");
+    } else {
+        printf("\nlas pilas tienen la misma cantidad de elementos");
+    }
+
+
+    return 0;
+}
