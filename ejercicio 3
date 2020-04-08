@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+
+int main()
+{
+    //cargar desde el teclado una pila y pasar a otra pila todos los elementos distintos de 8
+    
+    
+    Pila a, b, c;
+    inicpila(&a);
+    inicpila(&b);
+    inicpila(&c);
+    char letra;
+    int contador = 0;
+    do {
+        leer(&a);
+        scanf("%c", &letra);
+        if (letra == '*') {
+            desapilar(&a);
+        }
+        contador++;
+    } while (letra != '*');
+
+    while (!pilavacia(&a)) {
+        if (tope(&a) != 8) {
+            apilar(&b, desapilar(&a));
+        } else {
+            apilar(&c, desapilar(&a));
+        }
+    }
+
+    while (!pilavacia(&c)) {
+        apilar(&a, desapilar(&c));
+    }
+    mostrar(&a);
+    mostrar(&b);
+    mostrar(&c);
+    return 0;
+}
