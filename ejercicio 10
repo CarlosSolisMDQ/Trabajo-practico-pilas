@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+
+
+int main()
+{
+    //comparar que dos pilas sean iguales
+    
+    char letra = 'c';
+    Pila a, b, basura;
+    inicpila(&a);
+    inicpila(&b);
+    inicpila(&basura);
+
+    do {
+            printf("ingrese la pila 1\n");
+            leer(&a);
+            fflush(stdin);
+            printf("si no desea continuar ingrese *:");
+            scanf("%c", &letra);
+    } while (letra != '*');
+    letra = 'c';
+    do {
+            printf("ingrese la pila 2\n");
+            leer(&b);
+            fflush(stdin);
+            printf("si no desea continuar ingrese *:");
+            scanf("%c", &letra);
+    } while (letra != '*');
+
+
+    while (!pilavacia(&a) && !pilavacia(&b) && tope(&a) == tope(&b)) {
+        apilar(&basura, desapilar(&a));
+        apilar(&basura, desapilar(&b));
+    }
+    if(pilavacia(&a) && pilavacia(&b)){
+        printf("\nlas pilas son iguales");
+    } else {
+        printf("\nlas pilas son desiguales");
+    }
+
+
+    return 0;
+}
