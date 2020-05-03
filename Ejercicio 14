@@ -1,11 +1,11 @@
-#include <stdio.h>
+ca#include <stdio.h>
 #include <stdlib.h>
 #include "pila.h"
 int main()
 {
 
-    //suponiendo la existencia de una pila modelo(vacia o no), eliminar de la pila dada todos los elementos
-    //iguales en la pila modelo.
+    //determinar la catidad de elementos de dada, si es impar pasar el elemento del tope de aux a la pila par y si es impar
+    //pasar el tope a la pila par.
 
     Pila par, dada, impar, aux;
     inicpila(&par);
@@ -26,7 +26,7 @@ int main()
             counter++;
     } while (letra != '*');
 
-    //El trucho es cargar dos elementos consecutivamente y hacer que el segundo quede dentro de un condicional
+    //El truco es cargar dos elementos consecutivamente y hacer que el segundo quede dentro de un condicional
     //verificando que la pila origen no este vacia. Si esta vacia no se cargo un par, si no un elemento unico
     //por lo tanto es impar.
     while(!pilavacia(&dada)){
