@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+int main()
+{
+
+    //suponiendo la existencia de una pila modelo(vacia o no), eliminar de la pila dada todos los elementos
+    //iguales en la pila modelo.
+
+    Pila par, dada, impar, aux;
+    inicpila(&par);
+    inicpila(&dada);
+    inicpila(&impar);
+    inicpila(&aux);
+    int counter = 0;
+
+    char letra = 'c';
+
+
+    do {
+            printf("ingrese la pila dada\n");
+            leer(&dada);
+            fflush(stdin);
+            printf("si no desea continuar ingrese *:");
+            scanf("%c", &letra);
+            counter++;
+    } while (letra != '*');
+
+    //El trucho es cargar dos elementos consecutivamente y hacer que el segundo quede dentro de un condicional
+    //verificando que la pila origen no este vacia. Si esta vacia no se cargo un par, si no un elemento unico
+    //por lo tanto es impar.
+    while(!pilavacia(&dada)){
+            apilar(&aux , desapilar(&dada));
+            if(!pilavacia(&dada)){
+                apilar(&aux , desapilar(&dada));
+            }else{
+                apilar(&impar , desapilar(&aux));
+                printf("\nLa pila dada es impar");
+            }
+    }
+
+    if (pilavacia(&impar)){
+        printf("\n\nLa pila dada es par");
+    }
+
+
+
+
+
+
+    return 0;
+}
+
