@@ -4,8 +4,8 @@
 int main()
 {
 
-    //suponiendo la existencia de una pila modelo(vacia o no), eliminar de la pila dada todos los elementos
-    //iguales en la pila modelo.
+    //suponiendo la existencia de una pila limite, pasar los elementos de la pila que sean mayores o iguales al tope de la pila limite
+    //a la pila mayores, los restantes elementos a la pila menores.
 
     Pila limite, dada, mayores, menores;
     inicpila(&limite);
