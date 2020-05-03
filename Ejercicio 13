@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pila.h"
+int main()
+{
+
+    //suponiendo la existencia de una pila modelo(vacia o no), eliminar de la pila dada todos los elementos
+    //iguales en la pila modelo.
+
+    Pila limite, dada, mayores, menores;
+    inicpila(&limite);
+    inicpila(&dada);
+    inicpila(&mayores);
+    inicpila(&menores);
+
+    char letra = 'c';
+
+    do {
+            printf("ingrese la pila limite\n");
+            leer(&limite);
+            fflush(stdin);
+            printf("si no desea continuar ingrese *:");
+            scanf("%c", &letra);
+    } while (letra != '*');
+    letra = 'c';
+    do {
+            printf("ingrese la pila dada\n");
+            leer(&dada);
+            fflush(stdin);
+            printf("si no desea continuar ingrese *:");
+            scanf("%c", &letra);
+    } while (letra != '*');
+
+    while(!pilavacia(&dada)){
+        if (tope(&dada) >= tope(&limite)){
+            apilar(&mayores, desapilar(&dada));
+        } else {
+            apilar(&menores, desapilar(&dada));
+        }
+
+
+    }
+
+    //mostrar(&aux);
+    printf("\nPila dada: ");
+    mostrar(&dada);
+    printf("\nelementos mayores: ");
+    mostrar(&mayores);
+    printf("\nelementos menores: ");
+    mostrar(&menores);
+    printf("\nTope de pila limite: ");
+    printf("%i\n\n", tope(&limite));
+
+    return 0;
+}
+
